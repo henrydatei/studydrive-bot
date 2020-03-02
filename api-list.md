@@ -1,4 +1,4 @@
-'''
+```
 /api/app/v1/{answer_type}/answers/{answer_id}/create
 /api/app/v1/{answer_type}/answers/{answer_id}/delete
 /api/app/v1/{answer_type}/answers/{answer_id}/downvote
@@ -141,4 +141,4 @@
 /api/app/v1/users/upload_profile_picture
 /api/app/v1/users/verify/email
 /api/app/v1/verification/resend_email
-'''
+```
