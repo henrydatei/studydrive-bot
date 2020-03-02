@@ -97,4 +97,4 @@ try:
     f.close()
 except IOError:
     print "alts.txt not found"
-    print "Please run add-alts.py to add alts"
+    print "Please run add-alt.py to add alts"
