@@ -15,3 +15,6 @@ Studydrive is a platform where students can share lecture notes and ask question
 - upvote questions
 - upvote flashcards
 - play flashcards
+
+#### Special thanks
+Special thanks to [RomanKarwacik](RomanKarwacik) for releasing a [Studydrive Downloader in Python](https://gist.github.com/RomanKarwacik/225ceeca7a7825c0d2be7554c03b2bea) and helping me out with some problems.
