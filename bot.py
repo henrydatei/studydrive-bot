@@ -33,18 +33,19 @@ try:
     file = open("alts.txt")
     alts = file.read().splitlines()
     file.close()
-    username = alts[0].split(":")[0]
-    password = alts[0].split(":")[1]
+    randomAlt = random.randint(0,len(alts)-1)
+    username = alts[randomAlt].split(":")[0]
+    password = alts[randomAlt].split(":")[1]
     folderName = username.split("@")[0]
+    print "Use alt: " + str(username)
 
     # documents
     added = getAdditionsFromFiles(folderName + "/downloadedDocuments.txt", "documents.txt")
     print 'not downloaded documents:'
     for line in added:
         print line
-    #select 50% of un-downloaded documents to download
-    length = len(added)
-    choice = random.sample(added, int(round(length/2)))
+    #select 2 un-downloaded documents to download
+    choice = random.sample(added, 2)
     #download the documents
     tokenAlt = login(username, password)
     print "Downloading documents:"
@@ -60,9 +61,8 @@ try:
     print 'not upvoted documents:'
     for line in added:
         print line
-    #select 50% of un-upvoted documents to upvote
-    length = len(added)
-    choice = random.sample(added, int(round(length/2)))
+    #select 2 un-upvoted documents to upvote
+    choice = random.sample(added, 2)
     #upvote the documents
     tokenAlt = login(username, password)
     print "Upvoting documents:"
@@ -81,9 +81,8 @@ try:
     print 'not upvoted answers:'
     for line in added:
         print line
-    #select 50% of un-upvoted answers to upvote
-    length = len(added)
-    choice = random.sample(added, int(round(length/2)))
+    #select 2 un-upvoted answers to upvote
+    choice = random.sample(added, 2)
     #upvote the answers
     tokenAlt = login(username, password)
     print "Upvoting answers:"
