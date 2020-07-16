@@ -114,6 +114,12 @@ def getMyInteractionFeed(token):
     req.raise_for_status()
     return req.text
 
+def getMyStats(token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.get('{}api/app/v1/users/right_sidebar_stats'.format(baseurl), headers=headers)
+    req.raise_for_status()
+    return req.text
+
 def getInformationAboutQuestion(token, questionType, questionID):
     headers={"authorization": "Bearer "+token}
     req = requests.get('{}api/app/v1/{}/questions/{}'.format(baseurl,questionType,questionID), headers=headers)
