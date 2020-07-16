@@ -90,6 +90,24 @@ def getProfileDocuments(profileID, token):
     req.raise_for_status()
     return req.text
 
+def getProfileFlashcards(token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.get('{}api/app/v1/feed/my_flashcard_sets'.format(baseurl), headers=headers)
+    req.raise_for_status()
+    return req.text
+
+def getDocumentDetails(docid, token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.get('{}api/app/v1/documents/{}/details'.format(baseurl,docid), headers=headers)
+    req.raise_for_status()
+    return req.text
+
+def getMyDocuments(token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.get('{}api/app/v1/feed/my_documents'.format(baseurl), headers=headers)
+    req.raise_for_status()
+    return req.text
+
 def getMyInteractionFeed(token):
     headers={"authorization": "Bearer "+token}
     req = requests.get('{}api/app/v1/feed/my_answers_feed'.format(baseurl), headers=headers)
@@ -150,7 +168,7 @@ def crawlAllCourses(lastcrawled, university_id, token):
 def crawlForInformation(token, masterID, masterName):
     # search for documents
     documentFile = open("documents.txt", "w+")
-    documents = getProfileDocuments(masterID, token)
+    documents = getMyDocuments(token)
     rawData = makeReadyForJSON(documents)
     JSON = json.loads(rawData)
     length = len(JSON["files"])
