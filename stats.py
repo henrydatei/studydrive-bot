@@ -37,4 +37,4 @@ followedUsers = stats['followed_users']
 
 currentDate = datetime.now().strftime('%d.%m.%Y')
 
-print currentDate + ";" + str(credits) + ";" + str(karma) + ";" + str(karmaRank) + ";" + str(totalUploads) + ";" + str(totalDownloads) + ";" + str(totalUpvotes) + ";" + str(totalPosts) + ";" + str(totalAnswers) + ";" + str(totalBestAnswers) + ";" + str(totalFlashcards) + ";" + str(followedPosts) + ";" + str(followedFiles) + ";" + str(followedFlashcards) + ";" + str(followedUsers)
+print currentDate + "," + str(credits) + "," + str(karma) + "," + str(karmaRank) + "," + str(totalUploads) + "," + str(totalDownloads) + "," + str(totalUpvotes) + "," + str(totalPosts) + "," + str(totalAnswers) + "," + str(totalBestAnswers) + "," + str(totalFlashcards) + "," + str(followedPosts) + "," + str(followedFiles) + "," + str(followedFlashcards) + "," + str(followedUsers)
