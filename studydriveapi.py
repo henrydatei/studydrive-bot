@@ -138,6 +138,24 @@ def upvoteDocument(token, fileID):
     req.raise_for_status()
     return req.text
 
+def upvoteFlashcard(token, flashcardID):
+    headers={"authorization": "Bearer "+token}
+    req = requests.post('{}api/app/v1/flashcards/sets/{}/vote/up'.format(baseurl,flashcardID), headers=headers)
+    req.raise_for_status()
+    return req.text
+
+def startFlashcard(token, flashcardID):
+    headers={"authorization": "Bearer "+token}
+    req = requests.post('{}api/app/v1/flashcards/sets/{}/study/start'.format(baseurl,flashcardID), headers=headers)
+    req.raise_for_status()
+    return req.text
+
+def finishFlashcard(token, flashcardID):
+    headers={"authorization": "Bearer "+token}
+    req = requests.post('{}api/app/v1/flashcards/sets/{}/study/finish'.format(baseurl,flashcardID), headers=headers)
+    req.raise_for_status()
+    return req.text
+
 def downloadAllFilesInCourse(filelist, token, folder="."):
     for f in filelist:
         docid = f['file_id']
@@ -178,6 +196,14 @@ def crawlForInformation(token, masterID, masterName):
         #documentName = JSON["files"][i]["file_name"]
         #documentFile.write(str(documentID))
     documentFile.close()
+
+    # search for flashcards
+    flashcardFile = open("flashcards.txt", "w+")
+    flashcards = json.loads(makeReadyForJSON(getProfileFlashcards(token)))
+    for flashcard in flashcards['data']:
+        flashcardID = flashcard['id']
+        flashcardFile.write(str(flashcardID) + "\n")
+    flashcardFile.close()
 
     # search for questions/answers
     answerFile = open("answers.txt", "w+")

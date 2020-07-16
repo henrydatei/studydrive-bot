@@ -39,7 +39,7 @@ try:
     folderName = username.split("@")[0]
     print "Use alt: " + str(username)
 
-    # documents
+    # download documents
     added = getAdditionsFromFiles(folderName + "/downloadedDocuments.txt", "documents.txt")
     print 'not downloaded documents:'
     for line in added:
@@ -71,6 +71,27 @@ try:
         print docID
         document = upvoteDocument(tokenAlt, docID)
         f.write(str(docID) + "\n")
+    f.close()
+
+    # upvote and play Flashcards
+    added = getAdditionsFromFiles(folderName + "/upvotedFlashcards.txt", "flashcards.txt")
+    print 'not upvoted documents:'
+    for line in added:
+        print line
+    #select 2 un-upvoted flashcards to upvote
+    choice = random.sample(added, 2)
+    #upvote the flashcards
+    tokenAlt = login(username, password)
+    print "Upvoting flashcards:"
+    f = open(folderName + "/upvotedFlashcards.txt", "a+")
+    for flashcardID in choice:
+        print flashcardID
+        flashcard = upvoteFlashcard(tokenAlt, flashcardID)
+        f.write(str(flashcardID) + "\n")
+
+        # play flashcard
+        startFlashcard(tokenAlt,flashcardID)
+        finishFlashcard(tokenAlt,flashcardID)
     f.close()
 
     # upvote Questions

@@ -19,6 +19,8 @@ else:
     f.close()
     f = open(folderName + "/upvotedQuestions.txt", "w+")
     f.close()
+    f = open(folderName + "/upvotedFlashcards.txt", "w+")
+    f.close()
     f = open("alts.txt", "a+")
     f.write(username + ":" + password + "\n")
     f.close()
