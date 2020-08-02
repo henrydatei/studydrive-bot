@@ -138,6 +138,13 @@ def upvoteAnswer(token, answerType, answerID):
     req.raise_for_status()
     return req.text
 
+def upvoteQuestion(token, questionType, questionID):
+    headers={"authorization": "Bearer "+token}
+    params={'question_id': questionID, 'questionType': questionType}
+    req = requests.post('{}api/app/v1/questions/upvote'.format(baseurl), headers=headers, params=params)
+    req.raise_for_status()
+    return req.text
+
 def upvoteDocument(token, fileID):
     headers={"authorization": "Bearer "+token}
     req = requests.post('{}api/app/v1/documents/{}/upvote'.format(baseurl,fileID), headers=headers)

@@ -94,7 +94,23 @@ for flashcardID in choice:
 f.close()
 
 # upvote Questions
-# Currently searching for an API-method. Maybe /api/app/v1/questions/upvote ?
+added = getAdditionsFromFiles(folderName + "/upvotedQuestions.txt", "questions.txt")
+print 'not upvoted questions:'
+for line in added:
+    print line
+#select 2 un-upvoted answers to upvote
+choice = random.sample(added, 2)
+#upvote the answers
+tokenAlt = login(username, password)
+print "Upvoting questions:"
+f = open(folderName + "/upvotedQuestions.txt", "a+")
+for toUpvote in choice:
+    print toUpvote
+    type = toUpvote.split("|")[0]
+    id = toUpvote.split("|")[1]
+    answer = upvoteQuestion(tokenAlt, type, id)
+    f.write(str(toUpvote) + "\n")
+f.close()
 
 # upvote Answers
 added = getAdditionsFromFiles(folderName + "/upvotedAnswers.txt", "answers.txt")
