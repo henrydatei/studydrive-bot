@@ -140,7 +140,7 @@ def upvoteAnswer(token, answerType, answerID):
 
 def upvoteQuestion(token, questionType, questionID):
     headers={"authorization": "Bearer "+token}
-    params={'question_id': questionID, 'questionType': questionType}
+    params={'question_id': questionID, 'question_type': questionType}
     req = requests.post('{}api/app/v1/questions/upvote'.format(baseurl), headers=headers, params=params)
     req.raise_for_status()
     return req.text
