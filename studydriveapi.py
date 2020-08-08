@@ -169,6 +169,25 @@ def finishFlashcard(token, flashcardID):
     req.raise_for_status()
     return req.text
 
+def getLeftSidebar(token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.get('{}api/app/v1/users/left_sidebar'.format(baseurl), headers=headers)
+    req.raise_for_status()
+    return req.text
+
+def setCourseOrder(courses, token):
+    headers={"authorization": "Bearer "+token}
+    #string = '\"context\": \"course\",'
+    #for id in courses:
+    #    string = string + '\"ids[]\"' + ":" + str(id) + ","
+    #string = string[:-1]
+    #s = '{' + string + '}'
+    #params = json.loads(s)
+    req = requests.post('{}api/app/v1/community/order'.format(baseurl), headers=headers, data={'context':'course', 'ids[]': courses})
+    req.raise_for_status()
+    return req.text
+    #return s
+
 def downloadAllFilesInCourse(filelist, token, folder="."):
     for f in filelist:
         docid = f['file_id']
