@@ -37,6 +37,7 @@ username = alts[randomAlt].split(":")[0]
 password = alts[randomAlt].split(":")[1]
 folderName = username.split("@")[0]
 print "Use alt: " + str(username)
+tokenAlt = login(username, password)
 
 # download documents
 added = getAdditionsFromFiles(folderName + "/downloadedDocuments.txt", "documents.txt")
@@ -47,7 +48,6 @@ for line in added:
 if len(added) >= 2:
     choice = random.sample(added, 2)
     #download the documents
-    tokenAlt = login(username, password)
     print "Downloading documents:"
     f = open(folderName + "/downloadedDocuments.txt", "a+")
     for docID in choice:
@@ -65,7 +65,6 @@ for line in added:
 if len(added) >= 2:
     choice = random.sample(added, 2)
     #upvote the documents
-    tokenAlt = login(username, password)
     print "Upvoting documents:"
     f = open(folderName + "/upvotedDocuments.txt", "a+")
     for docID in choice:
@@ -83,7 +82,6 @@ for line in added:
 if len(added) >= 2:
     choice = random.sample(added, 2)
     #upvote the flashcards
-    tokenAlt = login(username, password)
     print "Upvoting and playing flashcards:"
     f = open(folderName + "/upvotedFlashcards.txt", "a+")
     for flashcardID in choice:
@@ -105,7 +103,6 @@ for line in added:
 if len(added) >= 2:
     choice = random.sample(added, 2)
     #upvote the answers
-    tokenAlt = login(username, password)
     print "Upvoting questions:"
     f = open(folderName + "/upvotedQuestions.txt", "a+")
     for toUpvote in choice:
@@ -125,7 +122,6 @@ for line in added:
 if len(added) >= 2:
     choice = random.sample(added, 2)
     #upvote the answers
-    tokenAlt = login(username, password)
     print "Upvoting answers:"
     f = open(folderName + "/upvotedAnswers.txt", "a+")
     for toUpvote in choice:
