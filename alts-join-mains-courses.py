@@ -1,6 +1,7 @@
 from studydriveapi import *
 from functions import *
 
+# master
 try:
     file = open("main-account.txt")
     loginData = file.read()
@@ -16,6 +17,22 @@ except IOError:
 finally:
     file.close()
 
+# main
 token = login(mainUsername, mainPassword)
 
-sortCourses(token)
+# alts
+file = open("alts.txt")
+alts = file.read().splitlines()
+file.close()
+
+for alt in alts:
+    username = alt.split(":")[0]
+    password = alt.split(":")[1]
+    tokenAlt = login(username,password)
+    print "Alt: " + str(username)
+
+    diff = getCourseDifference(token,tokenAlt)
+
+    for courseID in diff:
+        joinCourse(courseID,tokenAlt)
+    sortCourses(tokenAlt)

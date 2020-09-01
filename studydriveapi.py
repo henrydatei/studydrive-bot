@@ -181,6 +181,18 @@ def setCourseOrder(courses, token):
     req.raise_for_status()
     return req.text
 
+def joinCourse(courseID, token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.post('{}api/app/v1/courses/{}/join'.format(baseurl,courseID), headers=headers)
+    req.raise_for_status()
+    return req.text
+
+def getMyCourses(token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.get('{}api/app/v1/myself/courses'.format(baseurl), headers=headers)
+    req.raise_for_status()
+    return req.text
+
 def downloadAllFilesInCourse(filelist, token, folder="."):
     for f in filelist:
         docid = f['file_id']
