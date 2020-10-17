@@ -1,10 +1,14 @@
+from datetime import datetime
+
+currentDate = datetime.now().strftime('%Y-%m-%d')
+
 # main
 documents = open("documents.txt").read().splitlines()
 answers = open("answers.txt").read().splitlines()
 flashcards = open("flashcards.txt").read().splitlines()
 questions = open("questions.txt").read().splitlines()
 
-output = str(len(documents)) + "," + str(len(answers)) + "," + str(len(flashcards)) + "," + str(len(questions))
+output = currentDate + "," + str(len(documents)) + "," + str(len(answers)) + "," + str(len(flashcards)) + "," + str(len(questions))
 
 # alts
 file = open("alts.txt")
