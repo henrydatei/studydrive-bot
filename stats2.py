@@ -23,6 +23,6 @@ for alt in alts:
     upvotedFlashcards = open(folderName + "/upvotedFlashcards.txt").read().splitlines()
     upvotedQuestions = open(folderName + "/upvotedQuestions.txt").read().splitlines()
 
-    output = output + "," + str(len(downloadedDocuments)) + "," + str(len(upvotedAnswers)) + "," + str(len(upvotedAnswers)) + "," + str(len(upvotedDocuments)) + "," + str(len(upvotedFlashcards)) + "," + str(len(upvotedQuestions))
+    output = output + "," + str(len(downloadedDocuments)) + "," + str(len(upvotedAnswers)) + "," + str(len(upvotedDocuments)) + "," + str(len(upvotedFlashcards)) + "," + str(len(upvotedQuestions))
 
 print output
