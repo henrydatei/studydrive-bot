@@ -15,9 +15,12 @@ Studydrive is a platform where students can share lecture notes and ask question
 - play flashcards
 - joining/leaving the same courses as the main account
 - sort courses alphabetically
+- boost single document with all alts
+- get stats for main account
 
 ### Planned Features
 - boost random documents/questions/... to make the alts more "legit"
+- maybe multi-main-account-support?
 
 #### Special thanks
 Special thanks to [RomanKarwacik](RomanKarwacik) for releasing a [Studydrive Downloader in Python](https://gist.github.com/RomanKarwacik/225ceeca7a7825c0d2be7554c03b2bea) and helping me out with some problems.
