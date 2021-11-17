@@ -63,7 +63,7 @@ try:
     for line in added:
         print line
     #select 4 un-upvoted documents to upvote
-    if len(added) >= 2:
+    if len(added) >= 4:
         choice = random.sample(added, 4)
         #upvote the documents
         print "Upvoting documents:"
@@ -120,7 +120,7 @@ try:
     for line in added:
         print line
     #select 4 un-upvoted answers to upvote
-    if len(added) >= 2:
+    if len(added) >= 4:
         choice = random.sample(added, 4)
         #upvote the answers
         print "Upvoting answers:"
