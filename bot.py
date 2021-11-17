@@ -61,9 +61,9 @@ added = getAdditionsFromFiles(folderName + "/upvotedDocuments.txt", "documents.t
 print 'not upvoted documents:'
 for line in added:
     print line
-#select 2 un-upvoted documents to upvote
+#select 4 un-upvoted documents to upvote
 if len(added) >= 2:
-    choice = random.sample(added, 2)
+    choice = random.sample(added, 4)
     #upvote the documents
     print "Upvoting documents:"
     f = open(folderName + "/upvotedDocuments.txt", "a+")
@@ -118,9 +118,9 @@ added = getAdditionsFromFiles(folderName + "/upvotedAnswers.txt", "answers.txt")
 print 'not upvoted answers:'
 for line in added:
     print line
-#select 2 un-upvoted answers to upvote
+#select 4 un-upvoted answers to upvote
 if len(added) >= 2:
-    choice = random.sample(added, 2)
+    choice = random.sample(added, 4)
     #upvote the answers
     print "Upvoting answers:"
     f = open(folderName + "/upvotedAnswers.txt", "a+")
