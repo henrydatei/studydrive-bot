@@ -35,7 +35,7 @@ def sortCourses(token):
         id = courseData[0]
         ids.append(id)
     #print str(ids)
-    print setCourseOrder(ids,token)
+    print(setCourseOrder(ids[::-1],token))
 
 def getCourseDifference(tokenMain,tokenAlt):
     #main
