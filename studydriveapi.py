@@ -193,33 +193,6 @@ def getMyCourses(token):
     req.raise_for_status()
     return req.text
 
-def downloadAllFilesInCourse(filelist, token, folder="."):
-    for f in filelist:
-        docid = f['file_id']
-        docname = f['file_name'] + docid + f["file_name"].split(".")[-1]
-        print("Downloading {}...".format(docname))
-        doc = getDocument(docid,login_token)
-        if os.path.isfile(docname):
-            print("Found duplicate: {} already exists".format(docname))
-        file = open(folder + "/" + docname, "wb")
-        file.write(doc)
-        file.close()
-
-def crawlAllCourses(lastcrawled, university_id, token):
-    #lastcrawled = {'50936': "2019-09-27 11:38:57", ...}
-    courses = getUniversityData(universityid, token)
-    for c in courses:
-        if c["course_id"] in lastcrawled.keys():
-            until = lastcrawled[c["course_id"]]
-        else:
-            until = None
-        data = getFullCourseData(c["course_id"], token, until=until)
-        if not os.path.exists(c["course_name"]):
-            os.mkdir(c["course_name"])
-        downloadAllFilesInCourse(data["files"], token, folder=c["course_name"])
-        lastcrawled[c["course_id"]] = data["files"][0]["uploaded"]
-    return lastcrawled #return updated lastcrawled
-
 def crawlForInformation(token, masterID, masterName):
     # search for documents
     documentFile = open("documents.txt", "w+")
