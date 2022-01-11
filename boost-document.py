@@ -23,10 +23,10 @@ for alt in alts:
         username = alt.split(":")[0]
         password = alt.split(":")[1]
         folderName = username.split("@")[0]
-        print "Use alt: " + str(username)
+        print("Use alt: " + str(username))
         #download the documents
         tokenAlt = login(username, password)
-        print "Downloading documents:"
+        print("Downloading documents:")
         f = open(folderName + "/downloadedDocuments.txt", "a+")
         document = getDocument(docID, tokenAlt)
         f.write(str(docID) + "\n")

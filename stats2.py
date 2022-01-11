@@ -25,4 +25,4 @@ for alt in alts:
 
     output = output + "," + str(len(downloadedDocuments)) + "," + str(len(upvotedAnswers)) + "," + str(len(upvotedDocuments)) + "," + str(len(upvotedFlashcards)) + "," + str(len(upvotedQuestions))
 
-print output
+print(output)
