@@ -193,6 +193,30 @@ def getMyCourses(token):
     req.raise_for_status()
     return req.text
 
+def getMajors(token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.get('{}/api/app/v1/users/majors'.format(baseurl), headers = headers)
+    req.raise_for_status()
+    return req.text
+
+def getAllMajors(token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.get('{}/api/app/v1/majors'.format(baseurl), headers = headers)
+    req.raise_for_status()
+    return req.text
+
+def giveKarma(token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.post('{}/api/app/v1/users/give-karma'.format(baseurl), headers = headers)
+    req.raise_for_status()
+    return req.text
+
+def courseExpertDashboard(token):
+    headers={"authorization": "Bearer "+token}
+    req = requests.get('{}/api/app/v1/ke/dashboard'.format(baseurl), headers = headers)
+    req.raise_for_status()
+    return req.text
+
 def crawlForInformation(token, masterID, masterName):
     # search for documents
     documentFile = open("documents.txt", "w+")
