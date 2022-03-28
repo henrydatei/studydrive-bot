@@ -3,6 +3,7 @@ import json
 import os
 from datetime import datetime
 import unicodedata
+import re
 
 baseurl = "https://api.studydrive.net/"
 
@@ -216,6 +217,19 @@ def courseExpertDashboard(token):
     req = requests.get('{}/api/app/v1/ke/dashboard'.format(baseurl), headers = headers)
     req.raise_for_status()
     return req.text
+
+def getCredits(userID):
+    r = requests.get("https://www.studydrive.net/de/profile/sauron/{}#documents".format(userID))
+    html = r.text
+    result = re.search('sdWindow.profile = (.*);sdWindow.isTablet', html)
+    return json.loads(result.group(1))["credits"]
+
+def getStats(token, userID):
+    headers={"authorization": "Bearer "+token}
+    params = {"user_id": userID}
+    req = requests.get('{}api/app/v1/profiles/{}'.format(baseurl, userID), headers = headers, params = params)
+    req.raise_for_status()
+    return req.json()
 
 def crawlForInformation(token, masterID, masterName):
     # search for documents
