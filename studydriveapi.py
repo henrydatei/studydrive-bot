@@ -231,6 +231,34 @@ def getStats(token, userID):
     req.raise_for_status()
     return req.json()
 
+def switchNotification(token, id, notificationType):
+    headers={"authorization": "Bearer "+token}
+    params = {"id": id, "notification_type": notificationType}
+    req = requests.post('{}api/app/v1/users/settings'.format(baseurl), headers = headers, params = params)
+    req.raise_for_status()
+    return req.json()
+
+def switchPushNotification(token):
+    ids = [8, 10, 11, 14, 15, 28, 29, 45, 46, 44]
+    for id in ids:
+        switchNotification(token, id, "app")
+
+def switchMitteilungen(token):
+    ids = [9, 12, 13, 48, 49, 50]
+    for id in ids:
+        switchNotification(token, id, "app")
+
+def switchEmail(token):
+    ids = [39, 40, 41, "mailsummery", "newsletter", "partner", "exam_dates"]
+    types = ["app", "app", "app", "email", "email", "email", "email"]
+    for id, type in zip(ids, types):
+        switchNotification(token, id, type)
+
+def switchNewsfeed(token):
+    ids = [1, 2, 3, 4, 5, 6, 7]
+    for id in ids:
+        switchNotification(token, id, "app")
+
 def crawlForInformation(token, masterID, masterName):
     # search for documents
     documentFile = open("documents.txt", "w+")
