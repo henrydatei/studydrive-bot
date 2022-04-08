@@ -54,7 +54,7 @@ If you want a script that generates answers for a given question then have a loo
 
 To boost just a single document you can use [boost-document.py](https://github.com/henrydatei/studydrive-bot/blob/master/boost-document.py). It's made for command line usage so simply run
 ```bash
-python3 boost-document 123456
+python3 boost-document.py 123456
 ```
 where 123456 is the document ID. You can find this ID in the link to the document: If this is your document https://www.studydrive.net/de/doc/kreise/1203303 then the document ID is 1203303.
 
