@@ -5,8 +5,8 @@ import random
 baseurl = "https://api.studydrive.net/"
 
 def login(user, passwd):
-    param = {"client_id": 4,
-             "client_secret": "nmGaT4rJ3VVGQXu75ymi5Cu5bdqb3tFnkWw9f1IX",
+    param = {"client_id": 3,
+             "client_secret": "s4lMeCEkNyZcztmpycUlAkSvzAq3gSNjGhGoToDV",
              "grant_type":"password",
              "username": user,
              "password": passwd}
