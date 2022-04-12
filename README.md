@@ -1,6 +1,8 @@
 # studydrive-bot
 A bot for boosting your studydrive account
 
+## I'm currently cleaning up this repo and moving the code into a single package that can be easily handled. See [https://github.com/henrydatei/studydrive-api](https://github.com/henrydatei/studydrive-api)
+
 ### General information
 Studydrive is a platform where students can share lecture notes and ask questions. For interacting with this website you get credits and karma. The idea of this bot is to boost both values by making other accounts like or download your stuff. Therefore you need a main/master account (that account will be boosted) and a few other accounts ("alt-accounts" = "alternative accounts" or short "alts") that will like your stuff. When you create the alts you should use the main-account's reflink to get some extra credits.
 
@@ -21,7 +23,6 @@ Studydrive is a platform where students can share lecture notes and ask question
 ### Planned Features
 - boost random documents/questions/... to make the alts more "legit"
 - maybe multi-main-account-support?
-- cleanup -> maybe moving API into a PyPi-Package?
 - use a database instead of files to save information
 
 ### How to use this bot
