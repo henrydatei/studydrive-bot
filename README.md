@@ -69,7 +69,7 @@ python3 stats.py >> stats.csv
 ```
 and process this data with literally any tool.
 
-Recently I discovered that I can get even more information about a profile via the API so I wrote a script that should crawl all studydrive profiles and download the information. As this is WIP you can have a look at [crawlAllProfiles.py](https://github.com/henrydatei/studydrive-bot/blob/master/crawlAllProfiles.py).
+Recently I discovered that I can get even more information about a profile via the API so I wrote a script that should crawl all studydrive profiles and download the information [crawlAllProfiles.py](https://github.com/henrydatei/studydrive-bot/blob/master/crawlAllProfiles.py). For me it took 2 weeks to crawl all 3 million profiles.
 
 #### Special thanks
 Special thanks to [RomanKarwacik](https://github.com/RomanKarwacik) for releasing a [Studydrive Downloader in Python](https://gist.github.com/RomanKarwacik/225ceeca7a7825c0d2be7554c03b2bea) and helping me out with some problems.

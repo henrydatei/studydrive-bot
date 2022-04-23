@@ -2,7 +2,6 @@ import re
 import requests
 import json
 from datetime import datetime
-from tqdm import tqdm
 
 baseurl = "https://api.studydrive.net/"
 
@@ -29,21 +28,14 @@ def getStats(token, userID):
     req.raise_for_status()
     return req.json()
 
-# for i in tqdm(range(10)):
-#     currentDate = datetime.now().strftime('%Y-%m-%d %H:%m:%S')
-#     try:
-#         hauser = getStats(i)
-#         print(str(i) + "," + currentDate + "," + str(i) + ",\"" + str(hauser["name"]) + "\"," + str(hauser["karma"]) + ",\"" + str(hauser["karma_ranking"]) + "\"," + str(hauser["credits"]))
-#     except:
-#         pass
-
-token = login("email", "password")
-for i in tqdm(range(2820602)):
+def produceOutput(i):
+    print(i)
     try:
         stats = getStats(token, i)
+        credits = getCredits(i)
         currentDate = datetime.now().strftime('%Y-%m-%d %H:%m:%S')
         try:
-            university = stats["studies"][0]["university"]["name"]
+            university = stats["studies"][0]["university"]["name"].replace('"', '')
         except:
             university = ""
         try:
@@ -51,9 +43,21 @@ for i in tqdm(range(2820602)):
         except:
             semester = ""
         try:
-            program = stats["studies"][0]["programs"][0]["name"]
+            program = stats["studies"][0]["programs"][0]["name"].replace('"', '')
         except:
             program = ""
-        print(str(i) + "," + currentDate + "," + str(i) + ",\"" + str(stats["full_name"]) + "\"," + str(stats["karma_points"]) + ",\"" + str(stats["karma_animal"]) + "\"," + str(getCredits(1325403)) + ",\"" + str(stats["avatar_picture_large"]) + "\",\"" + str(stats["picture_large"]) + "\"," + str(int(stats["is_admin"])) + "," + str(stats["karma_rank"]) + "," + str(stats["total_uploads"]) + "," + str(stats["total_flashcard_sets"]) + "," + str(stats["total_downloads_generated"]) + "," + str(stats["total_upvotes"]) + "," + str(stats["total_posts"]) + "," + str(stats["total_answers"]) + "," + str(stats["total_best_answers"]) + "," + str(stats["followed_posts"]) + "," + str(stats["followed_files"]) + ",\"" + university + "\",\"" + semester + "\",\"" + program + "\",\"" + str(stats["share_link"]) + "\"")
+        return str(i) + "," + currentDate + "," + str(i) + ",\"" + str(stats["full_name"].replace('"', '')) + "\"," + str(stats["karma_points"]) + ",\"" + str(stats["karma_animal"]) + "\"," + str(credits) + ",\"" + str(stats["avatar_picture_large"]) + "\",\"" + str(stats["picture_large"]) + "\"," + str(int(stats["is_admin"])) + "," + str(stats["karma_rank"]) + "," + str(stats["total_uploads"]) + "," + str(stats["total_flashcard_sets"]) + "," + str(stats["total_downloads_generated"]) + "," + str(stats["total_upvotes"]) + "," + str(stats["total_posts"]) + "," + str(stats["total_answers"]) + "," + str(stats["total_best_answers"]) + "," + str(stats["followed_posts"]) + "," + str(stats["followed_files"]) + ",\"" + university + "\",\"" + semester + "\",\"" + program + "\",\"" + str(stats["share_link"]) + "\""
     except:
-        pass
+        return ""
+
+import multiprocessing
+
+cpus = multiprocessing.cpu_count()
+p = multiprocessing.Pool(20)
+token = login("email", "password")
+# The below 2 lines populate the list. This listX will later be accessed parallely. This can be replaced as long as listX is passed on to the next step.
+listX = range(3000000)
+with open('output.csv', 'w') as f:
+    for result in p.imap(produceOutput, listX):
+        # (item, count) tuples from worker
+        f.write(result + "\n")
